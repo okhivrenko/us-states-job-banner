@@ -1,0 +1,22 @@
+{
+  "name": "us-states-job-banner",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Responsive hero banner with a clickable US states map that links each state to a job search.",
+  "scripts": {
+    "predev": "npm run generate:states",
+    "dev": "vite",
+    "prebuild": "npm run generate:states",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "generate:states": "node generate-states.mjs states.ts"
+  },
+  "devDependencies": {
+    "d3-geo": "^3.1.1",
+    "topojson-client": "^3.1.0",
+    "typescript": "^5.6.0",
+    "us-atlas": "^3.0.1",
+    "vite": "^6.0.0"
+  }
+}
