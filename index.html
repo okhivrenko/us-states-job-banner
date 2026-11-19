@@ -11,23 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="usmb hero" aria-labelledby="hero-title">
       <div class="hero__circle" aria-hidden="true"></div>
-
-      <header class="nav">
-        <a class="nav__brand" href="#">JobMap</a>
-        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
-        <nav id="nav-links" class="nav__links">
-          <a href="#">Compact Map</a>
-          <a href="#">Compact Jobs</a>
-          <a href="#">FAQs</a>
-          <a href="#">Resources</a>
-          <a href="#">Blog</a>
-          <a href="#" class="btn btn--primary btn--sm">Post Jobs</a>
-        </nav>
-      </header>
 
       <div class="hero__body">
         <div class="hero__copy">
@@ -48,7 +33,7 @@
         </div>
 
         <figure class="hero__map">
-          <svg id="us-map" role="group" aria-label="Map of the United States. Select a state to search jobs."></svg>
+          <svg class="usmb-map" role="group" aria-label="Map of the United States. Select a state to search jobs."></svg>
           <div class="tooltip" id="tooltip" role="status" aria-live="polite" hidden></div>
           <figcaption class="legend">
             <span class="legend__swatch legend__swatch--hl"></span> Compact state

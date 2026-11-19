@@ -15,16 +15,15 @@
 *::after { box-sizing: border-box; }
 
 html, body { margin: 0; }
-body { font-family: var(--font); background: var(--blue); color: var(--white); }
+body { font-family: var(--font); background: #fff; color: var(--white); }
 
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
   overflow: hidden;
-  min-height: min(100vh, 880px);
   background: var(--blue);
   border-left: 8px solid var(--yellow);
-  padding: 24px clamp(20px, 5vw, 72px) 48px;
+  padding: clamp(32px, 5vw, 56px) clamp(20px, 5vw, 72px);
   isolation: isolate;
   display: flex;
   flex-direction: column;
@@ -77,7 +76,6 @@ body { font-family: var(--font); background: var(--blue); color: var(--white); }
   flex: 1;
   align-items: center;
   gap: clamp(24px, 4vw, 64px);
-  margin-top: clamp(32px, 6vh, 80px);
 }
 
 .hero__copy h1 {
@@ -106,7 +104,7 @@ body { font-family: var(--font); background: var(--blue); color: var(--white); }
 
 /* ---------- Map ---------- */
 .hero__map { position: relative; margin: 0; }
-#us-map { display: block; width: 100%; height: auto; overflow: visible; }
+.usmb-map { display: block; width: 100%; height: auto; overflow: visible; }
 
 .state path {
   fill: var(--blue);
@@ -146,7 +144,7 @@ body { font-family: var(--font); background: var(--blue); color: var(--white); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
-  .hero__body { grid-template-columns: 1fr; margin-top: 40px; }
+  .hero__body { grid-template-columns: 1fr; }
   .hero__map { order: 2; }
   .legend { justify-content: flex-start; }
 }

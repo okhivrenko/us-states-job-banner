@@ -4,11 +4,13 @@ import { CONFIG } from './config';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
-const svg = document.querySelector<SVGSVGElement>('#us-map')!;
-const tooltip = document.querySelector<HTMLDivElement>('#tooltip')!;
-const select = document.querySelector<HTMLSelectElement>('#state-select')!;
-const navToggle = document.querySelector<HTMLButtonElement>('.nav__toggle')!;
-const navLinks = document.querySelector<HTMLElement>('#nav-links')!;
+// Everything is looked up inside the banner, so it can live on any page without clashing.
+const root: ParentNode = document.querySelector('.usmb') ?? document;
+const svg = root.querySelector<SVGSVGElement>('.usmb-map')!;
+const tooltip = root.querySelector<HTMLDivElement>('.tooltip')!;
+const select = root.querySelector<HTMLSelectElement>('.state-picker select')!;
+const navToggle = root.querySelector<HTMLButtonElement>('.nav__toggle');
+const navLinks = root.querySelector<HTMLElement>('.nav__links');
 
 const highlighted = new Set(CONFIG.highlighted);
 
@@ -86,11 +88,11 @@ function renderSelect(): void {
 }
 
 /* ---------- Mobile nav ---------- */
-navToggle.addEventListener('click', () => {
+navToggle?.addEventListener('click', () => {
   const open = navToggle.getAttribute('aria-expanded') === 'true';
   navToggle.setAttribute('aria-expanded', String(!open));
   navToggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
-  navLinks.classList.toggle('is-open', !open);
+  navLinks?.classList.toggle('is-open', !open);
 });
 
 /* ---------- Demo mode: no job board behind GitHub Pages, so show the target instead of a 404 ---------- */
