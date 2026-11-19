@@ -15,6 +15,7 @@ let highlighted = new Set(CONFIG.highlighted);
 
 function goTo(state: UsState): void {
   const url = CONFIG.jobsUrl(state.code, state.name);
+  if (DEMO) return demoToast(url);
   if (CONFIG.openInNewTab) window.open(url, '_blank', 'noopener');
   else window.location.href = url;
 }
@@ -99,6 +100,32 @@ navToggle.addEventListener('click', () => {
   navToggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
   navLinks.classList.toggle('is-open', !open);
 });
+
+/* ---------- Demo mode: no job board behind GitHub Pages, so show the target instead of a 404 ---------- */
+const DEMO = location.hostname.endsWith('github.io');
+let toastTimer = 0;
+function demoToast(url: string): void {
+  let t = document.querySelector<HTMLDivElement>('#demo-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'demo-toast';
+    t.setAttribute('role', 'status');
+    t.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:10;max-width:calc(100vw - 32px);padding:12px 18px;border-radius:8px;background:#fff;color:#10254f;font:600 14px/1.4 var(--font);box-shadow:0 8px 24px rgba(0,0,0,.3)';
+    document.body.append(t);
+  }
+  t.textContent = `Demo: on the live job board this opens ${url}`;
+  t.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = window.setTimeout(() => (t!.hidden = true), 3500);
+}
+if (DEMO) {
+  document.addEventListener('click', (e) => {
+    const a = (e.target as Element).closest('a.state');
+    if (!a) return;
+    e.preventDefault();
+    demoToast(a.getAttribute('href')!);
+  });
+}
 
 renderMap();
 renderSelect();
