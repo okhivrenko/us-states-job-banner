@@ -8,7 +8,7 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 const root: ParentNode = document.querySelector('.usmb') ?? document;
 const svg = root.querySelector<SVGSVGElement>('.usmb-map')!;
 const tooltip = root.querySelector<HTMLDivElement>('.tooltip')!;
-const select = root.querySelector<HTMLSelectElement>('.state-picker select')!;
+const select = root.querySelector<HTMLSelectElement>('.state-picker select');
 const navToggle = root.querySelector<HTMLButtonElement>('.nav__toggle');
 const navLinks = root.querySelector<HTMLElement>('.nav__links');
 
@@ -80,6 +80,7 @@ function hideTooltip(): void {
 
 /* ---------- Select fallback (small states are hard to tap on phones) ---------- */
 function renderSelect(): void {
+  if (!select) return;
   for (const s of STATES) select.add(new Option(s.name, s.code));
   select.addEventListener('change', () => {
     const state = STATES.find((s) => s.code === select.value);

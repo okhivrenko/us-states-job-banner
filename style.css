@@ -87,7 +87,7 @@ body { font-family: var(--font); background: #fff; color: var(--white); }
 }
 .hero__copy h1 { text-wrap: balance; }
 .hero__copy h1 span { display: block; color: var(--yellow); }
-.hero__copy p { margin: 0 0 32px; max-width: 34em; color: var(--muted); font-size: clamp(1rem, 1.3vw, 1.2rem); line-height: 1.6; }
+.hero__copy p { margin: 0; max-width: 34em; color: var(--muted); font-size: clamp(1rem, 1.3vw, 1.2rem); line-height: 1.6; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; }
 
 .state-picker { display: none; margin-top: 28px; }
