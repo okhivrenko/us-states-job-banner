@@ -14,7 +14,4 @@ export const CONFIG = {
 
   /** Open job searches in a new tab. */
   openInNewTab: false,
-
-  /** Pool used by the "Refresh highlights" button in the demo. */
-  highlightPool: ['AZ', 'CO', 'DE', 'GA', 'IA', 'ID', 'KY', 'LA', 'MD', 'MS', 'NC', 'ND', 'NE', 'NH', 'OK', 'SC', 'TN', 'TX', 'UT', 'VA', 'WI'],
 };

@@ -7,11 +7,10 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 const svg = document.querySelector<SVGSVGElement>('#us-map')!;
 const tooltip = document.querySelector<HTMLDivElement>('#tooltip')!;
 const select = document.querySelector<HTMLSelectElement>('#state-select')!;
-const refreshBtn = document.querySelector<HTMLButtonElement>('#refresh')!;
 const navToggle = document.querySelector<HTMLButtonElement>('.nav__toggle')!;
 const navLinks = document.querySelector<HTMLElement>('#nav-links')!;
 
-let highlighted = new Set(CONFIG.highlighted);
+const highlighted = new Set(CONFIG.highlighted);
 
 function goTo(state: UsState): void {
   const url = CONFIG.jobsUrl(state.code, state.name);
@@ -86,13 +85,6 @@ function renderSelect(): void {
   });
 }
 
-/* ---------- Demo: refresh highlights ---------- */
-refreshBtn.addEventListener('click', () => {
-  const pool = [...CONFIG.highlightPool].sort(() => Math.random() - 0.5);
-  highlighted = new Set(pool.slice(0, 5 + Math.floor(Math.random() * 4)));
-  paintHighlights();
-});
-
 /* ---------- Mobile nav ---------- */
 navToggle.addEventListener('click', () => {
   const open = navToggle.getAttribute('aria-expanded') === 'true';
@@ -120,7 +112,7 @@ function demoToast(url: string): void {
 }
 if (DEMO) {
   document.addEventListener('click', (e) => {
-    const a = (e.target as Element).closest('a.state');
+    const a = (e.target as Element).closest('a.state, .hero__actions a.btn--primary');
     if (!a) return;
     e.preventDefault();
     demoToast(a.getAttribute('href')!);
